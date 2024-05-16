@@ -20,9 +20,9 @@ class UserPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, User $account): Response
+    public function view(User $user, User $account): bool
     {
-        return !$user->is_staff ? Response::allow() : Response::deny('Fuck off');
+        return !$user->is_staff;
     }
 
     /**

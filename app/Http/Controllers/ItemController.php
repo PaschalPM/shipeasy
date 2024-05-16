@@ -51,7 +51,8 @@ class ItemController extends Controller
     public function update(ItemRequest $itemRequest, Item $item)
     {
         $itemRequest->validated();
-        $item->update($itemRequest->safe()->all());
+        $item->fill($itemRequest->safe()->all());
+        $item->save();
         return new ItemResource($item);
     }
 
