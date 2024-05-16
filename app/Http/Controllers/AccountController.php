@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\AccountResource;
+use App\Models\Item;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -44,6 +45,7 @@ class AccountController extends Controller
     public function show(int $id)
     {
         $user = User::find($id);
+        $this->authorize('view', $user);
 
         return response()->json($user);
     }
